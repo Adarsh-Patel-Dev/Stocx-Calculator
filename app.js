@@ -9,9 +9,9 @@ btn.addEventListener("click", submitHandler);
 
 function submitHandler() {
 
-    var ip = initialPrice.value;
-    var qt = stockQuantity.value;
-    var cpp = currentPrice.value;
+    var ip = Number(initialPrice.value);
+    var qt = Number(stockQuantity.value);
+    var cpp = Number(currentPrice.value);
     profitAndLoss(ip, qt, cpp);
 
     initialPrice.value = ' ';
@@ -37,23 +37,29 @@ function profitAndLoss(initial, quantity, current) {
 
     } else
 
-    if (initial > current) {
+    if (initial < current) {
+        console.log(initial,current);
+
+        var profit = (current - initial) * quantity;
+
+        var profitPercent = ((profit  * 100)/ initial).toFixed(2);
+        
+        message(`Hey you have made ${profit} profit and your profit percentage is ${profitPercent}% 🤩`);
+
+        document.querySelector("#output-box").style.backgroundColor = "rgb(3, 129, 3)";
+        document.querySelector("body").style.backgroundColor = "#8dd693";
+
+   
+    }
+     else  if (initial > current) {
         var loss = (initial - current) * quantity;
-        var lossPercent = Number.parseFloat((loss / initial) * 100).toFixed(2);
+        var lossPercent = ((loss * 100 ) / initial).toFixed(2);
 
         message(`Hey you have made ${loss} loss and your loss percentage is ${lossPercent}% 😕`);
 
         document.querySelector("#output-box").style.backgroundColor = "red";
         document.querySelector("body").style.backgroundColor = "#ba5f5f";
 
-    }
-     else if (initial < current) {
-        var profit = (current - initial) * quantity;
-        var profitPercent = Number.parseFloat((profit / initial) * 100).toFixed(2);
-        message(`Hey you have made ${profit} profit and your profit percentage is ${profitPercent}% 🤩`);
-
-        document.querySelector("#output-box").style.backgroundColor = "rgb(3, 129, 3)";
-        document.querySelector("body").style.backgroundColor = "#8dd693";
 
     } else {
         message("No gain no pain, No pain no gain😎");
