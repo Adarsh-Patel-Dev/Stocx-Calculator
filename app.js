@@ -24,11 +24,11 @@ function submitHandler() {
 function profitAndLoss(initial, quantity, current) {
 
     if (initial < 0 || quantity < 0 || current < 0) {
-        message("Please enter valid values😏");
+        message("Please enter positive values😏");
     } else
 
-    if (initial == "" || quantity == "" || current == "") {
-        message("Please enter all the fields😏");
+    if (initial == '' || quantity == '' || current == '') {
+        message("Input fields can not be empty or zero😏");
 
         document.querySelector("body").style.backgroundColor = "#08ffd6";
         document.querySelector("body").style.color = "white";
