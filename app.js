@@ -27,7 +27,7 @@ function profitAndLoss(initial, quantity, current) {
         message("Please enter valid values😏");
     } else
 
-    if (initial === "" || quantity === "" || current === "") {
+    if (initial == "" || quantity == "" || current == "") {
         message("Please enter all the fields😏");
 
         document.querySelector("body").style.backgroundColor = "#08ffd6";
@@ -42,8 +42,8 @@ function profitAndLoss(initial, quantity, current) {
 
         var profit = (current - initial) * quantity;
 
-        var profitPercent = ((profit  * 100)/ initial).toFixed(2);
-        
+        var profitPercent = (((current - initial)*100 )/initial).toFixed(2);
+
         message(`Hey you have made ${profit} profit and your profit percentage is ${profitPercent}% 🤩`);
 
         document.querySelector("#output-box").style.backgroundColor = "rgb(3, 129, 3)";
@@ -53,7 +53,8 @@ function profitAndLoss(initial, quantity, current) {
     }
      else  if (initial > current) {
         var loss = (initial - current) * quantity;
-        var lossPercent = ((loss * 100 ) / initial).toFixed(2);
+
+        var lossPercent = (((initial - current)*100)/initial).toFixed(2);
 
         message(`Hey you have made ${loss} loss and your loss percentage is ${lossPercent}% 😕`);
 
